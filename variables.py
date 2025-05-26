@@ -1,6 +1,7 @@
 b = 17 #span (m)
 S = 27 #wing surface (m^2)
 m = 5100 #total mass (kg)
+P = m*9.8 #weight
 fuel = 0.2*m # % of fuell from total mass (kg)
 
 #lift
