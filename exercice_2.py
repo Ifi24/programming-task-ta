@@ -50,9 +50,17 @@ for v in valors_v_p:
 #points for required thrust
 endurance_t_y = min(valors_t)
 endurance_t_x = valors_v_t[valors_t.index(endurance_t_y)]
-range_t_y = 5261
+range_t_y = 5993
 range_t_x_1 = ((range_t_y-(range_t_y**2-4*A*B*W**2)**0.5)/(2*A*C))**0.5
 range_t_x_2 = ((range_t_y+(range_t_y**2-4*A*B*W**2)**0.5)/(2*A*C))**0.5
+
+#points for required power
+endurance_p_y = min(valors_p)
+endurance_p_x = valors_v_p[valors_p.index(endurance_p_y)]
+range_p_y =672513
+range_p_x_1 = ((4556.63-(4556.63**2-4*A*B*W**2)**0.5)/(2*A*C))**0.5
+range_p_x_2 = ((4556.63+(4556.63**2-4*A*B*W**2)**0.5)/(2*A*C))**0.5
+print(range_p_x_1,range_p_x_2)
 
 #dibuixar grafic
 plt.figure(figsize=(12, 6))
@@ -64,8 +72,8 @@ plt.plot(valors_v_t, valors_t_lift_induced, label="Lift induced",color = "green"
 plt.plot(valors_v_t, valors_t, label="Thrust Required",linewidth = 3)
 plt.axhline(Ta_SL,label = "Aviable thrust",color = "gray",linestyle="--",linewidth = 1.5)
 plt.scatter(endurance_t_x,endurance_t_y,label = "maximum endurance",color = "red", linewidths = 3, zorder = 2)
-plt.scatter(range_t_x_1,range_t_y,color = "red", linewidths = 3, zorder = 2)
-plt.scatter(range_t_x_2,range_t_y,color = "red", linewidths = 3, zorder = 2)
+plt.scatter(range_t_x_1,range_t_y,label = "maximum range",color = "purple", linewidths = 3, zorder = 2)
+plt.scatter(range_t_x_2,range_t_y,color = "purple", linewidths = 3, zorder = 2)
 plt.title("Thrust Required vs Airspeed")
 plt.xlabel('Airspeed V (m/s)')
 plt.ylabel('Required Thrust (N)')
@@ -78,8 +86,10 @@ plt.plot(valors_v_p, valors_p_zero_lift, label="Zero-Lift",color = "orange", lin
 plt.plot(valors_v_p, valors_p_lift_induced, label="Lift induced",color = "green",linewidth = 1.5)
 plt.plot(valors_v_p, valors_p, label="Power Required",linewidth = 3)
 plt.axhline(Pa_SL,label = "Combined power",color = "gray",linestyle="--",linewidth = 1.5)
+plt.scatter(endurance_p_x,endurance_p_y,label = "maximum endurance",color = "red", linewidths = 3, zorder = 2)
+plt.scatter(range_p_x_1,range_p_y,label = "maximum range",color = "purple", linewidths = 3, zorder = 2)
+plt.scatter(range_p_x_2,range_p_y,color = "purple", linewidths = 3, zorder = 2)
 plt.title("Power Required vs Airspeed")
-plt.suptitle("Turboprop engine")
 plt.xlabel('Airspeed V (m/s)')
 plt.ylabel('Required Power (W)')
 plt.legend(loc="best")
